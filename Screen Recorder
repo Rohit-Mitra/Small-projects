@@ -1,0 +1,21 @@
+import numpy as np
+import cv2
+import pyautogui as image
+
+fourcc = cv2.VideoWriter_fourcc(*"XVID")
+out = cv2.VideoWriter("C:\\Users\\Rohit Mitra\\Downloads\\output.avi", fourcc, 60.0, (1920,1080)) 
+#you can reduce fps by changing 60.0 and resolution by changing values inside inner bracket
+
+while True:
+    img = image.screenshot()
+    img_np_array = np.array(img)
+    
+    frame = cv2.cvtColor(img_np_array, cv2.COLOR_BGR2RGB)
+    
+    cv2.imshow("Recording Window", frame)
+    out.write(frame)
+    
+    if cv2.waitKey(1) == 27:  #this means screen will be recorded till esc key is pressed
+        break
+out.release()
+cv2.destroyAllWindows()    
