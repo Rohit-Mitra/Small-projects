@@ -1,0 +1,15 @@
+#you need to install modules : 1) pip intsall sounddevice
+#2) pip intsall scipy
+
+#-------------------------------------------------------------------------------------
+
+import sounddevice
+from scipy.io.wavfile import write
+fs = 48100  # usually 44100 fs sufficient
+second = 60  #this means the audio will be recorded for 60 seconds
+print("Recording...")
+record_voice = sounddevice.rec(int(second * fs), samplerate = fs, channels = 2)
+sounddevice.wait()
+write("C:\\Users\\Rohit Mitra\\Downloads\\output.wav", fs, record_voice)
+
+#-------------------------------------------------------------------------------------
