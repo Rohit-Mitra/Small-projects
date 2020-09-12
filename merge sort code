@@ -14,3 +14,12 @@ def merge(left, right):
         result.append(right[j])
         j += 1
     return result
+
+def merge_sort(L):
+    if len(L) < 2:
+        return L[:]
+    else:
+        middle = len(L)//2
+        left = merge_sort(L[:middle])
+        right = merge_sort(L[middle:])
+        retun merge(left, right)
